@@ -1,0 +1,948 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>albums</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>user_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>使用者ID</td>
+							</tr>
+							<tr>
+								<td>albumable_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>相簿編號</td>
+							</tr>
+							<tr>
+								<td>albumable_type</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>相簿類型</td>
+							</tr>
+							<tr>
+								<td>name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>相簿名稱</td>
+							</tr>
+							<tr>
+								<td>description</td>
+								<td>text</td>
+								<td>NOT NULL</td>
+								<td>描述</td>
+							</tr>
+							<tr>
+								<td>cover_image</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>相簿封面</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>建立時間戳記</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp)</td>
+								<td>NOT NULL</td>
+								<td>更新資料戳記</td>
+							</tr>
+						
+							
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h3>categories</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>相簿類別名稱</td>
+							</tr>
+							<tr>
+								<td>en_name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>		
+               <section>
+					<h3>comments</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>user_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>相簿類別名稱</td>
+							</tr>
+							<tr>
+								<td>commentable_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>commentable_type</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>content</td>
+								<td>COLLATE</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>status</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>comment_parent</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>anonymous</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>deleted_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>	
+    <section>
+					<h3>facebooks</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>user_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>相簿類別名稱</td>
+							</tr>
+							<tr>
+								<td>facebook_id</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>email</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>avatar</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>avatar_original</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						
+						</tbody>
+					</table>
+				</section>		
+<section>
+					<h3>images</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>album_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>相簿類別名稱</td>
+							</tr>
+							<tr>
+								<td>file_name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>file_size</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>file_mime</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>file_path</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>description</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>cover_img</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						
+						</tbody>
+					</table>
+				</section>		
+ <section>
+					<h3>item_user</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>user_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>item_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>price</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						
+						</tbody>
+					</table>
+				</section>		
+ <section>
+					<h3>items</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>name </td>
+								<td>varchar(100)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>price</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>description</td>
+								<td>text</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>new</td>
+								<td>tinyint(1)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>free</td>
+								<td>tinyint(1)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>disabled</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>hitpoint</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>user_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>category_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>target</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>start_time</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>end_time</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>repost</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>notification</td>
+								<td>tinyint(1)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>deleted_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						
+						</tbody>
+					</table>
+				</section>	
+<section>
+					<h3>majors</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>name #</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>acronym</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+				
+						</tbody>
+					</table>
+				</section>					
+				<section>
+					<h3>reports</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>user_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>reportable_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>reportable_type</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>content</td>
+								<td>text</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+									<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+									<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+				
+						</tbody>
+					</table>
+				</section>		
+				<section>
+					<h3>users</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>major_id</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>college_id #</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>username</td>
+								<td>varchar(20)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>pseudonym</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>firstname</td>
+								<td>varchar(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>lastname</td>
+								<td>varchar(10)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>email</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>other_email</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>password </td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>birthday</td>
+								<td>date</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>gender</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>phone</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>avatar</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>line_username</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>telegram_username</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>activation_code</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>actived</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>activated_at</td>
+								<td>date</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>last_login</td>
+								<td>date</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>registed_ip</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>login_ip</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>permission</td>
+								<td>int(11)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>access_token</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>read_notification_at</td>
+								<td>date</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>remember_token</td>
+								<td>varchar(100)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+								<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+						
+						
+						</tbody>
+					</table>
+				</section>	
+						<section>
+					<h3>colleges</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>名稱</th>
+								<th>資料類型</th>
+								<th>空值</th>
+								<th>簡介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>id *</td>
+								<td>int(10)</td>
+								<td>NOT NULL</td>
+								<td>AUTO_INCREMENT</td>
+							</tr>
+							<tr>
+								<td>name</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>acronym</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>email</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+							<tr>
+								<td>description</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+									<tr>
+								<td>address</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+									<tr>
+								<td>phone</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+										<tr>
+								<td>group_id</td>
+								<td>varchar(255)</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+										<tr>
+								<td>created_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+										<tr>
+								<td>updated_at</td>
+								<td>timestamp</td>
+								<td>NOT NULL</td>
+								<td>不知道</td>
+							</tr>
+				
+						</tbody>
+					</table>
+				</section>	
+				
+				
+				<section>Slide 2</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

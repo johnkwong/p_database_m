@@ -1,0 +1,1176 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>高級資料庫管理</h1>
+					<h2>學生拍賣系統資料庫</h2>
+				</section>
+
+				<section>
+					<section>
+						<h2>資料庫架構</h2>
+						<p>圖</p>
+					</section>
+					<section>
+						<h3>albums</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>使用者ID</td>
+								</tr>
+								<tr>
+									<td>albumable_id</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>相簿編號</td>
+								</tr>
+								<tr>
+									<td>albumable_type</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>相簿類型</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>相簿名稱</td>
+								</tr>
+								<tr>
+									<td>description</td>
+									<td>text</td>
+									<td>&#x2718;</td>
+									<td>描述</td>
+								</tr>
+								<tr>
+									<td>cover_image</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>相簿封面</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>建立時間戳記</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>更新時間戳記</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>categories</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>相簿類別名稱</td>
+								</tr>
+								<tr>
+									<td>en_name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>type</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	               <section>
+						<h3>comments</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>相簿類別名稱</td>
+								</tr>
+								<tr>
+									<td>commentable_id</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>commentable_type</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>content</td>
+									<td>COLLATE</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>comment_parent</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>anonymous</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+								<tr>
+									<td>deleted_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	    <section>
+						<h3>facebooks</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>相簿類別名稱</td>
+								</tr>
+								<tr>
+									<td>facebook_id</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>email</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>avatar</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>avatar_original</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+	<section>
+						<h3>images</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>album_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>相簿類別名稱</td>
+								</tr>
+								<tr>
+									<td>file_name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>file_size</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>file_mime</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>file_path</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>description</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>cover_img</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+	 <section>
+						<h3>item_user</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>item_id</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>price</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+	 <section>
+						<h3>items</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>name </td>
+									<td>varchar(100)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>price</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>description</td>
+									<td>text</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>new</td>
+									<td>tinyint(1)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>free</td>
+									<td>tinyint(1)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>disabled</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>hitpoint</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+								<tr>
+									<td>category_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>target</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>start_time</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>end_time</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>type</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>repost</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>notification</td>
+									<td>tinyint(1)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>deleted_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+	<section>
+						<h3>majors</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>name #</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>acronym</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>reports</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>user_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>reportable_id</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>reportable_type</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>content</td>
+									<td>text</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+										<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+										<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>users</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>major_id</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>college_id #</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>username</td>
+									<td>varchar(20)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>pseudonym</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>firstname</td>
+									<td>varchar(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>lastname</td>
+									<td>varchar(10)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>email</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>other_email</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+								<tr>
+									<td>password </td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>birthday</td>
+									<td>date</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>gender</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>phone</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>avatar</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>line_username</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>telegram_username</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>activation_code</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>actived</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>activated_at</td>
+									<td>date</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>last_login</td>
+									<td>date</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+									<tr>
+									<td>registed_ip</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>login_ip</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>permission</td>
+									<td>int(11)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>access_token</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>read_notification_at</td>
+									<td>date</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>remember_token</td>
+									<td>varchar(100)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+									<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+					</section>
+							<section>
+						<h3>colleges</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>名稱</th>
+									<th>資料類型</th>
+									<th>空值</th>
+									<th>簡介</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id *</td>
+									<td>int(10)</td>
+									<td>&#x2718;</td>
+									<td>A_I</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>acronym</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>email</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+								<tr>
+									<td>description</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+										<tr>
+									<td>address</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+										<tr>
+									<td>phone</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	        <section>
+						<table width="100%">
+							<tbody>
+											<tr>
+									<td>group_id</td>
+									<td>varchar(255)</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+											<tr>
+									<td>created_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+											<tr>
+									<td>updated_at</td>
+									<td>timestamp</td>
+									<td>&#x2718;</td>
+									<td>不知道</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>特別</h2>
+						<p>圖</p>
+					</section>
+					<section>
+						<h2>資料庫架構</h2>
+						<p>圖</p>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>SQL Injection</h2>
+						<h3>SQL攻擊簡稱隱碼攻擊，是發生於應用程式之資料庫層的安全漏洞</h3>
+					</section>
+					<section>
+						<h3>User Table</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>id</th>
+									<th>username</th>
+									<th>password</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>ixiapeng</td>
+									<td>df1f57</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>johnkwong</td>
+									<td>1353d2</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>normanlee</td>
+									<td>874095</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>login.php</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$sql = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
+$result = mysqli_query($db,$sql);
+if($result) {
+	 session_register("username");
+	 $_SESSION['login_user'] = $username;
+	 header("location: welcome.php");
+}else {
+	 $error = "Your Login Name or Password is invalid";
+}
+						</code></pre>
+
+					</section>
+					<section>
+						<p>Username: johnkwong</p>
+						<p>Password: 1 OR 1 = 1 </p>
+					  <pre><code class="hljs" data-trim contenteditable>
+SELECT * FROM user WHERE username = johnkwong and password = 1 OR 1 = 1
+						</code></pre>
+						<p>在Textbox輸入以上資料會使查詢成功。因為OR 1 = 1永遠是True</p>
+						<table>
+							<thead>
+								<tr>
+									<th>id</th>
+									<th>username</th>
+									<th>password</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2</td>
+									<td>johnkwong</td>
+									<td>1353d2</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h2 style="color:red">
+							還會更危險嗎?
+						</h2>
+						<h3>使用Kali Linux OS 和SQLMAP工具滲透測試, 可以用來測試公司網路會被駭客駭入和滲透的程度</h3>
+					</section>
+					<section>
+						<img src="images/sql1.png" width="700px">
+
+					</section>
+					<section>
+						<img src="images/sql2.png" width="700px">
+						<p>先輸入一些SQL找出網站弱點, 使網頁顯示SQL Error 頁。</p>
+					</section>
+					<section>
+						<img src="images/sql3.png" width="700px">
+						<p>因為網頁不是而GET方法傳遞資料, 而是POST方法, 沒有顯出Body
+資料,所以比較煩, 我們只好用LiveHTTP header一直Replay提交一
+些怪怪SQL語法和顯示header資訊。直到網頁顯示SQL Error 頁面。</p>
+					</section>
+					<section>
+						<img src="images/sql4.png" width="700px">
+						<p>從LiveHTTP header內Copy Error Page 的 URL和Cookies。再放到以上指令內, 去列出Server的資料庫。</p>
+					</section>
+					<section>
+						<img src="images/sql5.png" width="700px">
+						<p>打開目標網頁</p>
+					</section>
+					<section>
+						<img src="images/sql6.png" width="700px">
+						<p>看到資料庫是Mysql 5.0 Version 或相關資料。最近會列出資料庫。</p>
+					</section>
+					<section>
+						<img src="images/sql7.png" width="700px">
+						<p>到出資料庫table</p>
+					</section>
+					<section>
+						<img src="images/sql9.png" width="700px">
+						<p>列出資料庫columns</p>
+					</section>
+					<section>
+						<img src="images/sql10.png" width="700px">
+						<p>列出Column 的所以資料。如果拿到username & password 等資料。就可以
+使用登入系統, 再進行資料修改/ 刪除動作。</p>
+					</section>
+					<section>
+						<h2>如何解決?</h2>
+						<span class="fragment"> <h3>使用MD5 Hash </h3> </span>
+					</section>
+					<section>
+						<h3>MD5 Hash</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+INSERT INTO users (username,password) values ('johnkwong',md5('1353d2'));
+						</code></pre>
+						<h3>User Table</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>id</th>
+									<th>username</th>
+									<th>password</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>ixiapeng</td>
+									<td>040620d34ce1ce5ad40d4ac2a972f6f7</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>johnkwong</td>
+									<td>c5b597ddae90b6d05638ff85dbc89f61</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>normanlee</td>
+									<td>2001a2915e46bbb8b5404d7e816d28ca</td>
+								</tr>
+							</tbody>
+						</table>
+						<p>
+							在設計程式時, 考慮使用MD5 Hash對密碼進行加密。使用加密過的密碼沒法登入系統或進入步破壞。
+						</p>
+
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
