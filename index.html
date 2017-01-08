@@ -7,7 +7,7 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="css/theme/night.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,7 +24,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
+				<section data-background="https://media.giphy.com/media/110dhxfJebYOTm/giphy.gif">
 					<h1>高級資料庫管理</h1>
 					<h2>學生拍賣系統資料庫</h2>
 				</section>
@@ -32,7 +32,10 @@
 				<section>
 					<section>
 						<h2>資料庫架構</h2>
-						<p>圖</p>
+
+					</section>
+					<section>
+					<img src="images/db_r.png">
 					</section>
 					<section>
 						<h3>albums</h3>
@@ -42,7 +45,7 @@
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -62,13 +65,13 @@
 									<td>albumable_id</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>相簿編號</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>albumable_type</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>相簿類型</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>name</td>
@@ -131,7 +134,7 @@ CREATE TABLE `albums` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -145,31 +148,31 @@ CREATE TABLE `albums` (
 									<td>name</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>相簿類別名稱</td>
+									<td>項目類別名稱</td>
 								</tr>
 								<tr>
 									<td>en_name</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td> 項目類別名稱(英) </td>
 								</tr>
 								<tr>
 									<td>type</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>項目類別分類</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 							</tbody>
 						</table>
@@ -197,7 +200,7 @@ CREATE TABLE `categories` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -211,43 +214,43 @@ CREATE TABLE `categories` (
 									<td>user_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>相簿類別名稱</td>
+									<td>使用者ID</td>
 								</tr>
 								<tr>
 									<td>commentable_id</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>commentable_type</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>content</td>
 									<td>COLLATE</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>留言內容</td>
 								</tr>
 								<tr>
 									<td>status</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>留言開放狀態</td>
 								</tr>
 								<tr>
 									<td>comment_parent</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>anonymous</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>匿名</td>
 								</tr>
 							</tbody>
 						</table>
@@ -259,19 +262,19 @@ CREATE TABLE `categories` (
 									<td>deleted_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>刪除時間戳記</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 							</tbody>
 						</table>
@@ -302,7 +305,7 @@ CREATE TABLE `comments` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -316,49 +319,49 @@ CREATE TABLE `comments` (
 									<td>user_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>相簿類別名稱</td>
+									<td>使用者ID</td>
 								</tr>
 								<tr>
 									<td>facebook_id</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>facebook帳號</td>
 								</tr>
 								<tr>
 									<td>name</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>FB使用者名稱</td>
 								</tr>
 								<tr>
 									<td>email</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>FB使用者信箱</td>
 								</tr>
 								<tr>
 									<td>avatar</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>頭像圖片</td>
 								</tr>
 								<tr>
 									<td>avatar_original</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>原始頭像圖片</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -392,7 +395,7 @@ CREATE TABLE `facebooks` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -406,43 +409,43 @@ CREATE TABLE `facebooks` (
 									<td>album_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>相簿類別名稱</td>
+									<td>相簿ID</td>
 								</tr>
 								<tr>
 									<td>file_name</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>相簿名稱</td>
 								</tr>
 								<tr>
 									<td>file_size</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>檔案大小</td>
 								</tr>
 								<tr>
 									<td>file_mime</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>文件格式</td>
 								</tr>
 								<tr>
 									<td>file_path</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>檔案路徑</td>
 								</tr>
 								<tr>
 									<td>description</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>檔案描述</td>
 								</tr>
 								<tr>
 									<td>cover_img</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>檔案封面圖案</td>
 								</tr>
 							</tbody>
 						</table>
@@ -454,13 +457,13 @@ CREATE TABLE `facebooks` (
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -491,7 +494,7 @@ CREATE TABLE `images` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -505,31 +508,31 @@ CREATE TABLE `images` (
 									<td>user_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者ID</td>
 								</tr>
 								<tr>
-									<td>item_id</td>
+									<td>item_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>項目ID</td>
 								</tr>
 								<tr>
 									<td>price</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>價格</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -562,7 +565,7 @@ CREATE TABLE `item_user` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -576,49 +579,49 @@ CREATE TABLE `item_user` (
 									<td>name </td>
 									<td>varchar(100)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>項目名稱</td>
 								</tr>
 								<tr>
 									<td>price</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>價格</td>
 								</tr>
 								<tr>
 									<td>description</td>
 									<td>text</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>描述</td>
 								</tr>
 								<tr>
 									<td>new</td>
 									<td>tinyint(1)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>新品</td>
 								</tr>
 								<tr>
 									<td>free</td>
 									<td>tinyint(1)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>免費</td>
 								</tr>
 								<tr>
 									<td>disabled</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>項目開放狀態</td>
 								</tr>
 								<tr>
 									<td>hitpoint</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>點擊數量</td>
 								</tr>
 								<tr>
 									<td>user_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者ID</td>
 								</tr>
 							</tbody>
 						</table>
@@ -630,61 +633,61 @@ CREATE TABLE `item_user` (
 									<td>category_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>拍賣品分類ID</td>
 								</tr>
 								<tr>
 									<td>target</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>拍賣品對象</td>
 								</tr>
 								<tr>
 									<td>start_time</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>拍賣開始時間</td>
 								</tr>
 								<tr>
 									<td>end_time</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>拍賣結束時間</td>
 								</tr>
 								<tr>
 									<td>type</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>交易方法種類</td>
 								</tr>
 								<tr>
 									<td>repost</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>商品說明報告</td>
 								</tr>
 								<tr>
 									<td>notification</td>
 									<td>tinyint(1)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>訊息通知</td>
 								</tr>
 								<tr>
 									<td>deleted_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>刪除時間戳記</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -732,7 +735,7 @@ CREATE TABLE `items` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -746,25 +749,25 @@ CREATE TABLE `items` (
 									<td>name #</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>主修名稱</td>
 								</tr>
 								<tr>
 									<td>acronym</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>名稱英文縮寫</td>
 								</tr>
 								<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 								<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -793,7 +796,7 @@ CREATE TABLE `majors` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -807,37 +810,37 @@ CREATE TABLE `majors` (
 									<td>user_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者ID</td>
 								</tr>
 								<tr>
 									<td>reportable_id</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>投訴ID</td>
 								</tr>
 								<tr>
 									<td>reportable_type</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>投訴分類</td>
 								</tr>
 								<tr>
 									<td>content</td>
 									<td>text</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>投訴內容</td>
 								</tr>
 										<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 										<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -869,7 +872,7 @@ CREATE TABLE `reports` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -883,49 +886,49 @@ CREATE TABLE `reports` (
 									<td>major_id</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>主修名稱ID</td>
 								</tr>
 								<tr>
 									<td>college_id #</td>
 									<td>int(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>學校名稱ID</td>
 								</tr>
 								<tr>
 									<td>username</td>
 									<td>varchar(20)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者姓名</td>
 								</tr>
 								<tr>
 									<td>pseudonym</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者簡稱</td>
 								</tr>
 								<tr>
 									<td>firstname</td>
 									<td>varchar(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者姓氏</td>
 								</tr>
 								<tr>
 									<td>lastname</td>
 									<td>varchar(10)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者名稱</td>
 								</tr>
 								<tr>
 									<td>email</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者主要信箱</td>
 								</tr>
 								<tr>
 									<td>other_email</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者信箱</td>
 								</tr>
 							</tbody>
 						</table>
@@ -937,67 +940,67 @@ CREATE TABLE `reports` (
 									<td>password </td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>登入密碼</td>
 								</tr>
 								<tr>
 									<td>birthday</td>
 									<td>date</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>出生日期</td>
 								</tr>
 								<tr>
 									<td>gender</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者性別</td>
 								</tr>
 								<tr>
 									<td>phone</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者手機</td>
 								</tr>
 								<tr>
 									<td>avatar</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者圖像</td>
 								</tr>
 								<tr>
 									<td>line_username</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>telegram_username</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 								<tr>
 									<td>activation_code</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>繳活碼</td>
 								</tr>
 								<tr>
 									<td>actived</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>是否繳活</td>
 								</tr>
 								<tr>
 									<td>activated_at</td>
 									<td>date</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>繳活時間</td>
 								</tr>
 									<tr>
 									<td>last_login</td>
 									<td>date</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>最後登入時間</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1009,49 +1012,49 @@ CREATE TABLE `reports` (
 									<td>registed_ip</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>註冊時IP位置</td>
 								</tr>
 									<tr>
 									<td>login_ip</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>登入時IP位置</td>
 								</tr>
 									<tr>
 									<td>permission</td>
 									<td>int(11)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>權限</td>
 								</tr>
 									<tr>
 									<td>access_token</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 									<tr>
 									<td>read_notification_at</td>
 									<td>date</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 									<tr>
 									<td>remember_token</td>
 									<td>varchar(100)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 									<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 									<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 
@@ -1108,7 +1111,7 @@ CREATE TABLE `users` (
 									<th>名稱</th>
 									<th>資料類型</th>
 									<th>空值</th>
-									<th>簡介</th>
+									<th>備註</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -1122,37 +1125,37 @@ CREATE TABLE `users` (
 									<td>name</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>學校名稱</td>
 								</tr>
 								<tr>
 									<td>acronym</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>學校簡寫</td>
 								</tr>
 								<tr>
 									<td>email</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>使用者信箱</td>
 								</tr>
 								<tr>
 									<td>description</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 										<tr>
 									<td>address</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>學校地址</td>
 								</tr>
 										<tr>
 									<td>phone</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>學校電話</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1164,19 +1167,19 @@ CREATE TABLE `users` (
 									<td>group_id</td>
 									<td>varchar(255)</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>---</td>
 								</tr>
 											<tr>
 									<td>created_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>建立時間戳記</td>
 								</tr>
 											<tr>
 									<td>updated_at</td>
 									<td>timestamp</td>
 									<td>&#x2718;</td>
-									<td>不知道</td>
+									<td>更新時間戳記</td>
 								</tr>
 
 							</tbody>
@@ -1205,13 +1208,32 @@ CREATE TABLE `colleges` (
 				</section>
 
 				<section>
+
 					<section>
-						<h2>特別</h2>
-						<p>圖</p>
+						<h2>多態數據關係</h2>
+						<h3>(Polymorphic Relationship)</h3>
 					</section>
 					<section>
-						<h2>資料庫架構</h2>
-						<p>圖</p>
+						<h3>以下情況你會如何設計資料表?</h3>
+
+						<p class="fragment">用戶可以對項目進行評論; </p>
+						<p class="fragment">用戶可以對相簿進行評論; </p>
+						<p class="fragment">用戶可以對圖片進行評論; </p>
+						<p class="fragment">建立item_comments, album_comments 和image_comments三個資料表?</p>
+					</section>
+					<section>
+						<img src="images/polymorphic.png">
+						<p>xxxable_id與xxxable_type兩個字段，前者用來存儲相關聯內容的外鍵鍵值，後者則用來存儲相關聯內容的類型名</p>
+						<p><a href="#/1/2">Albums</a> | <a href="#/1/6">Comments</a> | <a href="#/1/19">Reports</a></p>
+					</section>
+					<section>
+						<h2>軟刪除</h2>
+						<h3>(Soft Delete)</h3>
+					</section>
+					<section>
+						<h3>什麼是軟刪除?</h3>
+						<p class="fragment">是隱藏在資料庫中條目的能力，代替移除條目的一切痕跡。這意味著資料可在日後被用來檢索。另一種想法是歸檔資料。</p>
+						<p class="fragment"><a href="#/1/6">Comments</a> | <a href="#/1/14">Items</a></p>
 					</section>
 				</section>
 
@@ -1223,7 +1245,7 @@ CREATE TABLE `colleges` (
 					</section>
 					<section>
 						<h3>User Table</h3>
-						<table width="100%">
+						<table >
 							<thead>
 								<tr>
 									<th>id</th>
@@ -1271,12 +1293,12 @@ if($result) {
 					</section>
 					<section>
 						<p>Username: johnkwong</p>
-						<p>Password: 1 OR 1 = 1 </p>
+						<p>Password: ' 1 OR 1 = 1 </p>
 					  <pre><code class="hljs" data-trim contenteditable>
 SELECT * FROM user WHERE username = johnkwong and password = 1 OR 1 = 1
 						</code></pre>
 						<p>在Textbox輸入以上資料會使查詢成功。因為OR 1 = 1永遠是True</p>
-						<table width="100%">
+						<table>
 							<thead>
 								<tr>
 									<th>id</th>
@@ -1327,7 +1349,7 @@ SELECT * FROM user WHERE username = johnkwong and password = 1 OR 1 = 1
 					</section>
 					<section>
 						<img src="images/sql7.png" width="700px">
-						<p>到出資料庫table</p>
+						<p>列出資料庫table</p>
 					</section>
 					<section>
 						<img src="images/sql9.png" width="700px">
@@ -1348,7 +1370,7 @@ SELECT * FROM user WHERE username = johnkwong and password = 1 OR 1 = 1
 INSERT INTO users (username,password) values ('johnkwong',md5('1353d2'));
 						</code></pre>
 						<h3>User Table</h3>
-						<table width="100%">
+						<table>
 							<thead>
 								<tr>
 									<th>id</th>
@@ -1380,6 +1402,10 @@ INSERT INTO users (username,password) values ('johnkwong',md5('1353d2'));
 
 					</section>
 				</section>
+				<section data-background="http://i.imgur.com/MvMxQ1a.gif">
+				<h1>Thanks</h1>
+
+				</section>
 			</div>
 		</div>
 
@@ -1394,7 +1420,7 @@ INSERT INTO users (username,password) values ('johnkwong',md5('1353d2'));
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
